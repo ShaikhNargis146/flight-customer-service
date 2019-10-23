@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("flights")
 public class FlightController {
@@ -21,13 +22,13 @@ public class FlightController {
 	@GetMapping
 	public @ResponseBody
     List<Flight> getAllFlights() {
-		System.out.println("getAllFlights-------");
+		logger.info("getAllFlights-------");
 		return flightService.getAllFlights();
 	}
 	@GetMapping("/{src}/{dest}")
 	public @ResponseBody
 	List<Flight> getByDepartureAndArrival(@PathVariable String src,@PathVariable  String dest) {
-		System.out.println("getAllFlights-------");
+		logger.info("getByDepartureAndArrival-------");
 		return flightService.getByDepartureAndArrival(src, dest);
 	}
 
